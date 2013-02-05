@@ -52,15 +52,12 @@ public class MainActivity extends Activity {
         
         Charset shiftJisCharset = Charset.forName("Shift_JIS");
         CharsetDecoder decoder = shiftJisCharset.newDecoder();
-        Reader is = new BufferedReader(new InputStreamReader(raw, decoder));
+        Reader is = new InputStreamReader(raw, decoder);
         
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         IOUtils.copy(is, output);
         
         
-        //CharBuffer buffer = decoder.decode(ByteBuffer.wrap(output.toByteArray()));
-        
-        //final String text = buffer.toString();
         final String text = new String(output.toByteArray());
         Log.v("encode-test", "out: " + text.length());
         runOnUiThread(new Runnable() {
